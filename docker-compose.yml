@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: infosuser
+      MYSQL_USER: lina
+      MYSQL_PASSWORD: linalina
+    networks:
+      - my-network
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer-container
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
